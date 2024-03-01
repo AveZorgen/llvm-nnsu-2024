@@ -1,0 +1,12 @@
+FILE(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
+SET(subdirs "")
+FOREACH(child ${children})
+  IF(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${child})
+    LIST(APPEND subdirs ${child})
+  ENDIF()
+ENDFOREACH()
+
+
+foreach(subd ${subdirs})
+  add_subdirectory(${subd})
+endforeach()
