@@ -8,5 +8,3 @@ FOREACH(child ${children})
     add_subdirectory(${child})
   ENDIF()
 ENDFOREACH()
-
-set(LLVM_TEST_DEPENDS ${LLVM_TEST_DEPENDS} PARENT_SCOPE)
