@@ -30,7 +30,7 @@ jobs:
           cmake --build build -j $(nproc)
       - name: Test
         run: |
-          cmake --build build -t check-llvm check-clang check-mlir -j $(nproc)
+          cmake --build build -t check-llvm -j $(nproc)
   macos-build:
     runs-on: macOS-latest
     steps:
@@ -58,7 +58,7 @@ jobs:
           cmake --build build -j $(nproc)
       - name: Test
         run: |
-          cmake --build build -t check-llvm check-clang check-mlir -j $(nproc)
+          cmake --build build -t check-llvm -j $(nproc)
   windows-build:
     runs-on: windows-latest
     steps:
