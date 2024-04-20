@@ -1,9 +1,12 @@
-# add_library(LLVMX86CoolPass MODULE
-#   X86CoolPass.cpp)
-add_llvm_pass_plugin(LLVMX86CoolPass
-  X86CoolPass.cpp   
-  DEPENDS
-  intrinsics_gen
-  X86
-  BUILDTREE_ONLY)
-set(LLVM_TEST_DEPENDS LLVMX86CoolPass ${LLVM_TEST_DEPENDS} PARENT_SCOPE)
+set(path ${CMAKE_CURRENT_SOURCE_DIR})
+cmake_path(GET path PARENT_PATH PATH_TO_X86)
+message("PATH_TO_X86: " ${PATH_TO_X86})
+
+FILE(GLOB children RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/*)
+FOREACH(child ${children})
+  IF(IS_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/${child})
+    add_subdirectory(${child})
+  ENDIF()
+ENDFOREACH()
+
+set(LLVM_TEST_DEPENDS ${LLVM_TEST_DEPENDS} PARENT_SCOPE)
